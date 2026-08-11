@@ -39,7 +39,16 @@ def Terminal(username, password):
     ]
 
     sys_ = []
-    prcs = Fore.RED+ f"[{username}]{Fore.GREEN}...@ {Fore.BLUE}\n--${Fore.CYAN} "
+    prcs = (
+    Fore.RED + f"[{username}]"
+    + Fore.WHITE + "──"
+    + Fore.GREEN + "@"
+    + Fore.BLUE + " \n╰─"
+    + Fore.RED + ""
+    + Fore.BLUE + "$"
+    + Fore.CYAN + " "
+    + Style.RESET_ALL
+)
     print("Press exit to quit: ")
     while True:
         command = input(prcs).strip()
