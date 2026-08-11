@@ -188,4 +188,4 @@ def Terminal(username, password):
         with open(f"{username}info.zcc",'w') as f:
                 f.write(f"{history}")
         
-Terminal("kali" ,"kali")
+Terminal(input("Username: "),input("Password))
