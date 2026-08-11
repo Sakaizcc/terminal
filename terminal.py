@@ -199,4 +199,4 @@ def Terminal(username, password):
         
 
         
-Terminal(input("Username: "),input("Password))
+Terminal(input("Username: "),input("Password: "))
