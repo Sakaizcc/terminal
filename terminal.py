@@ -1,5 +1,5 @@
 import subprocess
-import os
+import os,sys
 from pathlib import Path
 import hashlib
 from colorama import Fore
@@ -78,7 +78,16 @@ def Terminal(username, password):
                     password = input(f"New password for {username}: ")
                 else:
                     print("Incorrect password.")
-
+            elif(len(part) >=3 and part[1] == 'write' and part[2]):
+                if not(part[2] in file):
+                    bash(f"touch {part[2]}")
+                else:
+                    continue
+                while True:
+                    x = input("")
+                    bash(f"echo {x} >> {part[2]}")
+                    if(x == 'ex'): break
+                
             elif command.endswith("-!"):
                 if len(part) < 3:
                     print("Usage: nbash <file/directory> -!")
@@ -187,5 +196,7 @@ def Terminal(username, password):
                 print(result.stderr, end="")
         with open(f"{username}info.zcc",'w') as f:
                 f.write(f"{history}")
+        
+
         
 Terminal(input("Username: "),input("Password))
