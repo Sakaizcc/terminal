@@ -11,7 +11,8 @@ def bash(command: str):
         capture_output=True,
         text=True
     )
-
+bash("python3 -m ensurepip --upgrade")
+bash("pip install colorama")
 def Terminal(username, password):
     try:
         dir_ = Path.cwd()
