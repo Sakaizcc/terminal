@@ -14,16 +14,20 @@ def bash(command: str):
 def Terminal(username, password):
     dir_ = Path(Path.cwd())
     file = [f for f in dir_ .iterdir() if f.is_file()]
-    if(f"{username}.zcc" in file):
-        with open(f'{username}.zcc', 'r') as f:
-            if(f.read() == (hashlib.sha512(password.encode('utf-8')).hexdigest())):
-                print("Permission granted")
-            else:
-                print("Refused permission [Incorrect password]")
-                return 0
+    filename = f"{username}.zcc"
+
+    if os.path.exists(filename):
+        with open(filename, "r") as f:
+            file_content = f.read()
+        if file_content == hashlib.sha512(password.encode("utf-8")).hexdigest():
+            print("Permission granted")
+        else:
+            print("Refused permission [Incorrect password]")
+        return 0
     else:
-        with open(f'{username}.zcc', 'w') as f:
-            f.write((hashlib.sha512(password.encode('utf-8')).hexdigest()))
+        with open(filename, "w") as f:
+            f.write(hashlib.sha512(password.encode("utf-8")).hexdigest())
+            f.flush()
             f.write(username)
     history = []
     
@@ -35,7 +39,7 @@ def Terminal(username, password):
     ]
 
     sys_ = []
-    prcs = Fore.RED+ f"[{username}]{Fore.GREEN} @ {Fore.BLUE}\n--${Fore.CYAN} "
+    prcs = Fore.RED+ f"[{username}]{Fore.GREEN}...@ {Fore.BLUE}\n--${Fore.CYAN} "
     print("Press exit to quit: ")
     while True:
         command = input(prcs).strip()
@@ -162,8 +166,10 @@ def Terminal(username, password):
                     print("Error: value must be a float.")
                     continue
 
-                sys_.append(f"{part[2]} = {part[4]}")
+                sys_.append(f"{part[2]} = {part[4]}") 
 
+            if(len(part) >= 3 and part[1] == 'pyint' and part[2] == 'print'):
+                sys_.append(f"{command.lstrip("nbash").lstrip("pyint")}")
             elif len(part) >= 3 and part[1] == "pyint" and part[2] == "-e":
                 try:
                     exec("\n".join(sys_))
@@ -197,6 +203,4 @@ def Terminal(username, password):
         with open(f"{username}info.zcc",'w') as f:
                 f.write(f"{history}")
         
-
-        
-Terminal(input("Username: "),input("Password: "))
+Terminal(input("Username: "), input("Password: "))
