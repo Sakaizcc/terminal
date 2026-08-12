@@ -42,10 +42,10 @@ def Terminal(username, password):
 
         prcs = (
   Fore.RED + f"[{username}"
-+ Fore.WHITE + "──"
-+ Fore.GREEN + "@"
-+ Fore.WHITE +"──"
-+ Fore.GREEN + f"[{Path.cwd().name}]"
++ Fore.WHITE + ""
++ Fore.GREEN + " @ "
++ Fore.WHITE +""
++ Fore.GREEN + f"{Path.cwd().name}]"
 + Fore.BLUE + " \n╰─"
 + Fore.BLUE + "$"
 + Fore.CYAN + " "
