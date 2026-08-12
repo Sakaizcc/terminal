@@ -41,15 +41,16 @@ def Terminal(username, password):
         sys_ = []
 
         prcs = (
-  Fore.RED + f"[{username}"
-+ Fore.WHITE + ""
-+ Fore.GREEN + " @ "
-+ Fore.WHITE +""
-+ Fore.GREEN + f"{Path.cwd().name}]"
-+ Fore.BLUE + " \n╰─"
-+ Fore.BLUE + "$"
-+ Fore.CYAN + " "
-+ Style.RESET_ALL
+    Fore.WHITE + "┌──("
+    + Fore.RED + f"{username}"
+    + Fore.WHITE + "@"
+    + Fore.BLUE + f"{Path.cwd().name}"
+    + Fore.WHITE + ")-["
+    + Fore.CYAN + f"{Path.cwd()}"
+    + Fore.WHITE + "]\n"
+    + Fore.WHITE + "└─"
+    + Fore.RED + "$ "
+    + Style.RESET_ALL
 )
 
         print("Press exit to quit, help for help and 'nbash help -a' for nbash help")
