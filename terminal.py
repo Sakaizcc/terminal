@@ -41,15 +41,15 @@ def Terminal(username, password):
         sys_ = []
 
         prcs = (
-    Fore.WHITE + "┌──("
+    Fore.BLUE + "╭─["
     + Fore.RED + f"{username}"
     + Fore.WHITE + "@"
-    + Fore.BLUE + f"{Path.cwd().name}"
-    + Fore.WHITE + ")-["
-    + Fore.CYAN + f"{Path.cwd()}"
-    + Fore.WHITE + "]\n"
-    + Fore.WHITE + "└─"
+    + Fore.CYAN + f"{Path.cwd().name}"
+    + Fore.BLUE + "]"
+    + Fore.WHITE + "\n"
+    + Fore.BLUE + "╰─"
     + Fore.RED + "$ "
+    + Fore.CYAN
     + Style.RESET_ALL
 )
 
