@@ -41,7 +41,7 @@ def Terminal(username, password):
         sys_ = []
 
         prcs = (
-    Fore.RED + f"[{username}]"
+    Fore.RED + f" [{username}]"
     + Fore.WHITE + "──"
     + Fore.GREEN + "@"
     + Fore.BLUE + " \n╰─"
