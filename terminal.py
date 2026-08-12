@@ -51,8 +51,8 @@ def Terminal(username, password):
     + Style.RESET_ALL
 )
 
-        print("Press exit to quit: ")
-
+        print("Press exit to quit, help for help and 'nbash help -a' for nbash help")
+        print("Terminal")
         while True:
             try:
                 command = input(prcs).strip()
